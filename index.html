@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Piet Mondrian in CSS</title>
+    <style>
+      /* 1. Color variables */
+      :root {
+        --black: #000;
+        --white: #f0f1ec;
+        --red: #e72f24;
+        --blue: #004592;
+        --yellow: #f9d01e;
+        --gunmetal: #232629;
+      }
+
+      /* 2. CSS reset */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: inherit;
+      }
+
+      /* 3. Base styling */
+      body {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background-color: var(--black);
+        overflow: hidden;
+      }
+
+      .container {
+        /* Use clamp() to make container responsive */
+        height: clamp(300px, 90vw, 748px);
+        width: clamp(300px, 90vw, 748px);
+        display: grid;
+        grid-template-columns: 43% 27% 20% 10%;
+        grid-template-rows: 55% 17% 21% 7%;
+        gap: 1.2%;
+      }
+
+      /* 4. Default styling for blocks */
+      .container > * {
+        background-color: var(--white);
+        opacity: 0;
+        animation: fadeInUp 0.6s ease forwards;
+        transition: filter 0.3s ease;
+      }
+
+      /* Hover effect on blocks */
+      .container > *:hover {
+        filter: brightness(1.2);
+      }
+
+      /* 5. Block colors with animation */
+      /* Row 1 */
+      .container > *:nth-child(1) {
+        background-color: var(--red);
+        animation-delay: 0.1s;
+      }
+      .container > *:nth-child(2) {
+        grid-column: span 3;
+        animation-delay: 0.2s;
+      }
+
+      /* Row 2 */
+      .container > *:nth-child(3) {
+        grid-row: span 2;
+        animation-delay: 0.3s;
+      }
+      .container > *:nth-child(4) {
+        grid-column: span 2;
+        grid-row: span 2;
+        animation-delay: 0.4s;
+      }
+      .container > *:nth-child(5) {
+        background-color: var(--blue);
+        animation-delay: 0.5s;
+      }
+
+      /* Row 3 */
+      .container > *:nth-child(6) {
+        grid-row: span 2;
+        animation-delay: 0.6s;
+      }
+
+      /* Row 4 */
+      .container > *:nth-child(8) {
+        background-color: var(--yellow);
+        animation-delay: 0.8s;
+      }
+      .container > *:nth-child(9) {
+        background-color: var(--gunmetal);
+        animation-delay: 0.9s;
+      }
+
+      /* 6. Wiki link styling */
+      .wiki-link {
+        position: absolute;
+        bottom: 10px;
+        color: var(--white);
+        text-decoration: none;
+        font-size: 0.7rem;
+        font-family: sans-serif;
+        transition: color 0.3s;
+      }
+
+      .wiki-link:hover {
+        color: var(--yellow);
+      }
+
+      /* 7. Keyframes */
+      @keyframes fadeInUp {
+        0% {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        100% {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+
+    <a
+      href="https://en.wikipedia.org/wiki/Piet_Mondrian"
+      target="_blank"
+      class="wiki-link"
+      aria-label="Learn more about Piet Mondrian on Wikipedia"
+    >
+      [ Learn more about Piet Mondrian ]
+    </a>
+  </body>
+</html>
